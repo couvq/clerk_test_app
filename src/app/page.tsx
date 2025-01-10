@@ -1,9 +1,9 @@
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 
 const Home = async () => {
-  const { sessionClaims } = await auth();
-  const firstname = sessionClaims?.firstname;
-
+  const user = await currentUser();
+  console.log(user)
+  const firstname = user?.firstName;
   return (
     <>
       {
