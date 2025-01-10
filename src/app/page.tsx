@@ -1,14 +1,14 @@
 import { auth, currentUser } from "@clerk/nextjs/server";
 
 const Home = async () => {
-  const user = await currentUser();
-  console.log(user)
-  const firstname = user?.firstName;
+  const { userId, getToken } = await auth();
+  console.log(userId)
+  const token = await getToken();
+  console.log(token)
+  
   return (
     <>
-      {
-        firstname ? <h1><>Hello {firstname}</></h1> : null
-      }
+      Homepage
     </>
   );
 };
