@@ -6,17 +6,12 @@ import { NextResponse } from "next/server";
  * @returns long lived token for cli requests
  */
 export async function GET() {
-  const { getToken } = await auth();
+  const { userId, getToken } = await auth();
 
   const template = "cli-token";
-
-  const regularToken = await getToken();
-  if (!regularToken) return NextResponse.json("Unauthorized", { status: 401 });
+  if (!userId) return NextResponse.json("Unauthorized", { status: 401 });
 
   const cliToken = await getToken({ template });
-  console.debug(
-    `regularToken is different from the cliToken: ${regularToken !== cliToken}`
-  );
 
   return NextResponse.json(cliToken);
 }
