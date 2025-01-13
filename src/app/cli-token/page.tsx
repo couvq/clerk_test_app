@@ -1,4 +1,4 @@
-import { SignedIn, SignedOut, SignIn, SignInButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import React from "react";
 import { AuthCli } from "./AuthCli";
 
@@ -10,7 +10,6 @@ export default async function Page({ searchParams }: any) {
         <SignInButton
           fallbackRedirectUrl={`/cli-token?redirectUrl=${redirectUrl}`}
         />
-        {/* <SignIn redirectUrl={`/cli-token?redirectUrl=${searchParams.redirectUrl}`} /> */}
       </SignedOut>
       <SignedIn>
         <AuthCli />

@@ -1,13 +1,20 @@
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { auth } from "@clerk/nextjs/server";
 
 const Home = async () => {
   const { userId, getToken } = await auth();
-  console.log(userId)
+  console.log(userId);
   const token = await getToken();
-  console.log(token)
-  
+  console.log(token);
+
   return (
     <>
+      <SignedOut>
+        <SignInButton />
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
       Homepage
     </>
   );
