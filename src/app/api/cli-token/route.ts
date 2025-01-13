@@ -9,7 +9,13 @@ export async function GET() {
   const { userId, getToken } = await auth();
 
   const template = "cli-token";
-  if (!userId) return NextResponse.json("Unauthorized", { status: 401 });
+  if (!userId)
+    return NextResponse.json(
+      {
+        message: "Must log in to authenticate via CLI.",
+      },
+      { status: 401 }
+    );
 
   const cliToken = await getToken({ template });
 
