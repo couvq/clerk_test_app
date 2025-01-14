@@ -13,7 +13,7 @@ const getTokenAndRedirect = async (
   const redirectUrl = new URL(redirectUrlString);
   redirectUrl.searchParams.append("token", token);
   setLoading(false);
-  window.open(redirectUrl);
+  window.open(redirectUrl, "_self");
 };
 
 export const AuthCli = () => {
